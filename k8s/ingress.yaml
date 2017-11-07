@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: pytexas
+  name: helloworld
+spec:
+  rules:
+  - host: helloworld.mk
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: helloworld
+          servicePort: 5000
