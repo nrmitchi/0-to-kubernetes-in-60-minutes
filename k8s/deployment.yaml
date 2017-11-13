@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: pytexas
+  labels:
+    app: helloworld  # <-- Important
+  name: helloworld
+spec:
+  template:
+    metadata:
+      labels:
+        app: helloworld  # <-- Important
+    spec:
+      containers:
+      - image: helloworld:v1
+        imagePullPolicy: IfNotPresent
+        name: helloworld
+        ports:
+          - containerPort: 5000
