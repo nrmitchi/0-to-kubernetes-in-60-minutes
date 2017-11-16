@@ -3,7 +3,14 @@ kind: Ingress
 metadata:
   namespace: pytexas
   name: helloworld
+  # annotations:
+  #   # If you do not want to auto-redirect HTTP -> HTTPS, you can uncomment the following:
+  #   ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  tls:                 # We're using SSL
+  - hosts:             # Hosts we want this cert to apply to
+    - helloworld.mk
+    secretName: certs  # The name of the cert to apply
   rules:
   - host: helloworld.mk
     http:
